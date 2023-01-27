@@ -1,0 +1,57 @@
+.secondUSer {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.mainUser {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.wrapperMessMain {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 14px;
+    gap: 10px;
+
+    width: 252px;
+    /* height: 42px; */
+
+    background: #633bbc;
+    border-radius: 0px 8px 8px 8px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.wrapperMessSecond {
+    display: flex;
+    flex-direction: row;
+    padding: 14px;
+    gap: 10px;
+
+    width: 150px;
+    /* height: 42px; */
+
+    background: #07847e;
+    border-radius: 8px 8px 0px 8px;
+
+    /* Inside auto layout */
+}
+
+div .texto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

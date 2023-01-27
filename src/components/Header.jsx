@@ -1,8 +1,11 @@
 import './header.css';
 import { X } from 'phosphor-react'
-import { Circle } from 'phosphor-react'
+import { addDays, format, formatRelative, parseISO } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
 
 export const Header = () => {
+
     return (
         <>
             <header>
@@ -25,7 +28,13 @@ export const Header = () => {
                     </button>
                 </div>
 
-                <div></div>
+                <div>
+                    <div>
+                        {
+                            formatRelative(addDays(new Date(), 0), new Date(), { locale: ptBR })
+                        }
+                    </div>
+                </div>
 
             </header>
         </>

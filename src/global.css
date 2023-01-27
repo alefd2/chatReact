@@ -37,7 +37,6 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--grey-400);
-
 }
 
 h1 {
@@ -70,5 +69,4 @@ button:focus-visible {
   max-width: 70rem;
   margin: 2rem auto;
   padding: 0 10px;
-
 }
