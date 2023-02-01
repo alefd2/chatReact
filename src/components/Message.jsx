@@ -1,12 +1,17 @@
+import { useState } from "react";
 import "./message.css";
 
-export const Message = ({ content, data, author, main }) => {
+export const Message = ({ content, hour, author, main }) => {
+
     return (
-        <div className={main ? "mainUser" : "secondUSer"}>
-            <p>{author} - {data}</p>
-            <div className={main ? "wrapperMessMain" : "wrapperMessSecond"}>
-                <p className="texto">{content}</p>
+        <article>
+            <div className={main ? "mainUser" : "secondUSer"}>
+                <p>{author} - {hour}</p>
+                <div className={main ? "wrapperMessMain" : "wrapperMessSecond"}>
+                    <p className="texto">{content}</p>
+                </div>
             </div>
-        </div>
+
+        </article>
     )
 }
