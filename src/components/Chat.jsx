@@ -8,7 +8,7 @@ import { ptBR } from "date-fns/locale";
 export const Chat = () => {
   const [newMessage, setNewMessage] = useState({
     id: Math.random,
-    main: true,
+    main: false,
     author: "Alef Oliveira",
     content: "",
     hour: "",
@@ -17,21 +17,7 @@ export const Chat = () => {
   const [messages, setMessages] = useState([
     {
       id: Math.random,
-      main: true,
-      author: "Alef Oliveira",
-      content: "Tive uma ideia incrível para um projeto! 😍",
-      hour: "Hoje Às 20:40",
-    },
-    {
-      id: Math.random,
       main: false,
-      author: "Rebecca Ellery",
-      content: "Sério? Me conta mais.",
-      hour: "Hoje Às 20:40",
-    },
-    {
-      id: Math.random,
-      main: true,
       author: "Alef Oliveira",
       content: "Tive uma ideia incrível para um projeto! 😍",
       hour: "Hoje Às 20:40",
@@ -39,6 +25,27 @@ export const Chat = () => {
     {
       id: Math.random,
       main: true,
+      author: "Rebecca Ellery",
+      content: "Sério? Me conta mais.",
+      hour: "Hoje Às 20:40",
+    },
+    {
+      id: Math.random,
+      main: false,
+      author: "Alef Oliveira",
+      content: "Tive uma ideia incrível para um projeto! 😍",
+      hour: "Hoje Às 20:40",
+    },
+    {
+      id: Math.random,
+      main: false,
+      author: "Alef Oliveira",
+      content: "Tive uma ideia incrível para um projeto! 😍",
+      hour: "Hoje Às 20:40",
+    },
+    {
+      id: Math.random,
+      main: false,
       author: "Alef Oliveira",
       content: "Tive uma ideia incrível para um projeto! 😍",
       hour: "Hoje Às 20:40",
@@ -46,27 +53,6 @@ export const Chat = () => {
     {
       id: Math.random,
       main: true,
-      author: "Alef Oliveira",
-      content: "Tive uma ideia incrível para um projeto! 😍",
-      hour: "Hoje Às 20:40",
-    },
-    {
-      id: Math.random,
-      main: false,
-      author: "Rebecca Ellery",
-      content: "Sério? Me conta mais.",
-      hour: "Hoje Às 20:40",
-    },
-    {
-      id: Math.random,
-      main: false,
-      author: "Rebecca Ellery",
-      content: "Sério? Me conta mais.",
-      hour: "Hoje Às 20:40",
-    },
-    {
-      id: Math.random,
-      main: false,
       author: "Rebecca Ellery",
       content: "Sério? Me conta mais.",
       hour: "Hoje Às 20:40",
@@ -74,6 +60,20 @@ export const Chat = () => {
     {
       id: Math.random,
       main: true,
+      author: "Rebecca Ellery",
+      content: "Sério? Me conta mais.",
+      hour: "Hoje Às 20:40",
+    },
+    {
+      id: Math.random,
+      main: true,
+      author: "Rebecca Ellery",
+      content: "Sério? Me conta mais.",
+      hour: "Hoje Às 20:40",
+    },
+    {
+      id: Math.random,
+      main: false,
       author: "Alef Oliveira",
       content: "Tive uma ideia incrível para um projeto! 😍",
       hour: "Hoje Às 20:40",
@@ -96,6 +96,37 @@ export const Chat = () => {
     event.target.setCustomValidity("Esse campo é obrigatório");
   };
 
+  const handleChange = e => {
+    const currentData = formatRelative(addDays(new Date(), 0), new Date(), {
+      locale: ptBR,
+    });
+
+    let currentMesage = e.target.value;
+    let reDot = /[*]/g;
+
+    const inicio = currentMesage.search(reDot);
+    const fim = currentMesage.search(reDot, inicio + 1);
+
+    // if (inicio > 0) {
+    //   currentMesage = formataText(inicio, fim, currentMesage);
+    // }
+
+    setNewMessage({
+      ...newMessage,
+      content: currentMesage,
+      hour: currentData,
+    });
+  };
+
+  const formataText = (inicio, fim, currentMesage) => {
+    return (
+      <p>
+        {currentMesage.slice(0, inicio)}
+        <strong>{currentMesage.slice(inicio, fim)}</strong>
+        {currentMesage.slice(fim)}
+      </p>
+    );
+  };
   // const isNewMessageEmpty = newMessage.length === 0;
 
   return (
@@ -112,20 +143,7 @@ export const Chat = () => {
             name="message"
             placeholder="Digite sua mensagem"
             value={newMessage.content}
-            onChange={e => {
-              const currentData = formatRelative(
-                addDays(new Date(), 0),
-                new Date(),
-                {
-                  locale: ptBR,
-                }
-              );
-              setNewMessage({
-                ...newMessage,
-                content: e.target.value,
-                hour: currentData,
-              });
-            }}
+            onChange={e => handleChange(e)}
             onInvalid={handleCreateNewMessageValid}
             required
           />
